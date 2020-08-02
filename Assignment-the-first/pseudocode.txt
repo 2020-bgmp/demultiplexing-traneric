@@ -28,6 +28,9 @@ def reverse_complement(dna_string):
 	* Iterate through each character of the dna_string input within a for loop. Replace 'A' with 'T' and 'G' with 'C'. Append 
 	  each swapped character to the reverse_complement string.
 	* Reverse the reverse_complement string to get the reverse complement of the input.
+	
+	##### ^^ Need to account for the occurence of the letter "N" in the rev. complement function. ######
+	##### ^^ Also, avoid switching A for T in the first run through of the function, then in the second switching all the Ts for As -- switching some of them twice ###
 
 	return reverse_complement
 
@@ -74,6 +77,8 @@ while True:
 		* Increment the unknown_index by 1.
 		* Add the first biological read (dna1_record[1]) and second biological read (dna2_record[1]) into the non-matching index pair files.
 		* Continue to the next iteration of the while loop.
+		
+		########### ^^ Maybe add the index-pair at the top of the entry in the non-matching index files? ^^ ############################
 
 	if the "is_index_pair(index1, index2)" method call returns True do the following:
 
@@ -83,6 +88,9 @@ while True:
 		* Run a for loop to append the record lines from dna1_record and dna2_record into their corresponding forward and reverse
 		  FASTQ files. This step essentially writes the records with the index-pair header back into the FASTQ files. The name of 
 	          the file will be determined by running the index through a dictionary using regular expressions.
+		  
+		  ### Don't completely understand why regex is needed here. Couldn't you just get the name of the file
+		  from the record when you first run through the list of records? 
 
 	else do the following:
 		
@@ -96,6 +104,8 @@ while True:
 
 	if the dna1_record list is an empty list do the following:
 		* Break out of the while loop. This means the islice method has reached the end of the 4 FASTQ Files.
+		
+		### ^ If this doesn't work - although it seems to me like it will - try a for loop :) ^^ ####
 
 
 ##### BELOW ARE TEST EXAMPLES FOR MY FUNCTIONS #####
